@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  frontend:
+    container_name: ewastepas-user-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8010:80" 
+    networks:
+      - ewastepas-bridge
+    restart: unless-stopped
+
+networks:
+  ewastepas-bridge:
+    external: true
