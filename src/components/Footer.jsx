@@ -31,7 +31,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <img
-              src="/public/images/logoBulat.png"
+              src="/images/logoBulat.png"
               alt="Logo Ewhale"
               className="h-14 mx-auto md:mx-0"
             />

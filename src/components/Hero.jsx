@@ -7,7 +7,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-gray-900/60" />
         <img
-          src="/public/images/hero.png"
+          src="/images/hero.png"
           alt="Hero"
           className="h-full w-full object-cover opacity-50"
         />

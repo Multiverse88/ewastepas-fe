@@ -17,11 +17,11 @@ function LoginPage() {
     <div className="container px-4 py-16 mx-32 mt-16">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="w-4/5">
-          <img src="/public/images/register.png" alt="Registrasi" />
+          <img src="/images/register.png" alt="Registrasi" />
         </div>
         <div className="p-6 w-full max-w-md">
           <div className="flex justify-center mb-8 -mt-10">
-            <img src="/public/images/logo.png" alt="Logo" className="w-64" />
+            <img src="/images/logo.png" alt="Logo" className="w-64" />
           </div>
           <h1 className="text-4xl font-bold mb-2 -mt-5 text-gray-800">Masuk</h1>
           <h5 className="text-md mb-4 text-black opacity-50 font-semibold">
