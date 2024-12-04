@@ -20,6 +20,11 @@ export default {
       maxWidth: {
         "screen-xl": "1130px",
       },
+      width: {
+        90: "360px",
+        95: "440px",
+        100: "480px",
+      },
     },
   },
   plugins: [],
