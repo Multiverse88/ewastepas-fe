@@ -1,25 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
-import { fetchAllWasteTypes } from "../../services/wasteTypeService";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const CardSlider = ({ onCategorySelect }) => {
-  const [wasteTypes, setWasteTypes] = useState([]);
+const categoryData = [
+  {
+    image: "/images/kulkas.png",
+    bgImage: "/images/bg.jpg",
+    title: "Lorem",
+  },
+  {
+    image: "/images/kulkas.png",
+    bgImage: "/images/bg.jpg",
+    title: "Lorem",
+  },
+  {
+    image: "/images/kulkas.png",
+    bgImage: "/images/bg.jpg",
+    title: "Lorem",
+  },
+  {
+    image: "/images/kulkas.png",
+    bgImage: "/images/bg.jpg",
+    title: "Lorem",
+  },
+  {
+    image: "/images/kulkas.png",
+    bgImage: "/images/bg.jpg",
+    title: "Lorem",
+  },
+  {
+    image: "/images/kulkas.png",
+    bgImage: "/images/bg.jpg",
+    title: "Lorem",
+  },
+];
+
+const CardSlider = () => {
   const [activeCard, setActiveCard] = useState(null);
-
-  useEffect(() => {
-    const fetchWasteTypes = async () => {
-      try {
-        const data = await fetchAllWasteTypes();
-        setWasteTypes(data);
-      } catch (error) {
-        console.error("Error fetching waste types:", error);
-      }
-    };
-
-    fetchWasteTypes();
-  }, []);
 
   const settings = {
     dots: true,
@@ -37,7 +55,7 @@ const CardSlider = ({ onCategorySelect }) => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
         },
       },
     ],
@@ -45,7 +63,6 @@ const CardSlider = ({ onCategorySelect }) => {
 
   const handleCardClick = (index) => {
     setActiveCard(index);
-    onCategorySelect(wasteTypes[index]);
   };
 
   const Card = ({ image, bgImage, title, isActive, onClick }) => {
@@ -63,10 +80,12 @@ const CardSlider = ({ onCategorySelect }) => {
             backgroundPosition: "center",
           }}
         >
+          {/* image */}
           <div className="absolute inset-0 flex items-center justify-center">
             <img src={image} alt={title} className="w-52 object-contain z-10" />
           </div>
         </div>
+        {/* Title */}
         <div className="text-center mt-6 mb-12">
           <h3 className="text-lg font-semibold">{title}</h3>
         </div>
@@ -77,12 +96,12 @@ const CardSlider = ({ onCategorySelect }) => {
   return (
     <div className="container mx-auto py-16">
       <Slider {...settings}>
-        {wasteTypes.map((card, index) => (
+        {categoryData.map((card, index) => (
           <div key={index} className="px-4">
             <Card
               image={card.image}
-              bgImage="/images/bg.jpg"
-              title={card.waste_type_name}
+              bgImage={card.bgImage}
+              title={card.title}
               isActive={activeCard === index}
               onClick={() => handleCardClick(index)}
             />

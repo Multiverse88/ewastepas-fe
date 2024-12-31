@@ -25,7 +25,7 @@ const CheckoutPage = () => {
   });
 
   return (
-    <div className="bg-gray-100 min-h-screen p-8 pt-32">
+    <div className="bg-gray-50 min-h-screen p-8 pt-32">
       {/* Title */}
       <h2 className="text-2xl font-bold mb-5 ml-24">Penjemputan</h2>
       <div className="max-w-5xl mx-auto bg-white shadow-lg rounded-lg p-6 grid grid-cols-1 md:grid-cols-3 gap-6">

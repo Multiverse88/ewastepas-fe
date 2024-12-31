@@ -1,9 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const ordersData = [
   {
     orderId: "202411220005",
-    date: "22 November2024",
+    date: "22 November 2024",
     status: "Sedang di Proses",
     products: [
       {
@@ -22,25 +23,13 @@ const ordersData = [
       },
     ],
   },
-  {
-    orderId: "202411230006",
-    date: "23 November 2024",
-    status: "Sedang di Proses",
-    products: [
-      {
-        id: 3,
-        title: "Microwave",
-        points: 30,
-        quantity: 2,
-        image: "/images/kulkas.png",
-      },
-    ],
-  },
 ];
 
 const OnGoing = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 px-0 sm:px-0">
       {ordersData.map((order) => {
         const totalPoints = order.products.reduce(
           (total, product) => total + product.points * product.quantity,
@@ -50,37 +39,52 @@ const OnGoing = () => {
         return (
           <div
             key={order.orderId}
-            className="bg-white p-6 rounded-lg shadow w-full"
+            className="p-4 sm:p-6 rounded-lg shadow border border-gray-300"
           >
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="font-semibold">Order ID#{order.orderId}</h3>
-              <button className="text-primary font-semibold ml-[300px]">
-                Track
-              </button>
-              <span className="bg-yellow-300 text-gray-700 font-semibold px-3 py-1 rounded-full">
-                {order.status}
-              </span>
+            {/* Header */}
+            <div className="flex flex-col sm:flex-row justify-between items-start mb-4 space-y-2 sm:space-y-0">
+              <h3 className="font-semibold text-sm sm:text-base sm:ml-20 sm:-indent-20">
+                Order ID #{order.orderId}
+              </h3>
+              <div className=" flex flex-row justify-between sm:justify-end sm:gap-6 w-full">
+                <button
+                  className="text-primary  font-semibold text-sm sm:text-base bg-blue-50 hover:bg-blue-200 px-3 py-2 rounded-md"
+                  onClick={() => navigate(`/TrackPage/${order.orderId}`)}
+                >
+                  Track
+                </button>
+                <span className="bg-yellow-300 text-gray-700 font-semibold text-xs sm:text-sm px-3 py-2 rounded-full">
+                  {order.status}
+                </span>
+              </div>
             </div>
+
+            {/* Products */}
             {order.products.map((product) => (
-              <div key={product.id} className="border-t border-b py-4">
-                <div className="flex justify-between items-center">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className="w-40 object-contain"
-                  />
-                  <span className="mr-[300px] font-semibold">
+              <div
+                key={product.id}
+                className="border-t border-b py-4 flex flex-col sm:flex-row items-center sm:justify-between"
+              >
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="w-28 sm:w-32 h-auto object-contain mb-4 sm:mb-0"
+                />
+                <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 w-full sm:w-auto">
+                  <span className="text-sm sm:text-base font-semibold">
                     {product.title}
                   </span>
-                  <span>
+                  <span className="text-gray-600 text-sm sm:text-base">
                     {product.quantity} x {product.points} Points
                   </span>
                 </div>
               </div>
             ))}
-            <div className="flex justify-between items-center mt-4">
-              <span>{order.date}</span>
-              <span className="font-semibold">
+
+            {/* Footer */}
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mt-4 space-y-2 sm:space-y-0">
+              <span className="text-sm text-gray-500">{order.date}</span>
+              <span className="font-semibold text-sm sm:text-base">
                 Total Points: {totalPoints} Points
               </span>
             </div>
